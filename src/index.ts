@@ -16,6 +16,7 @@ const askForInput = () => {
         fetchRelatedPeople(processedInput).then((result) => {
 
           result.map(r => {
+            console.log(r.name);
             console.log(r.type);
             console.log(r.people);
             console.log("--");

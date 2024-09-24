@@ -3,7 +3,8 @@ import { Person } from "./Person";
 
 export abstract class Resource {
     name: string;
-    type: string;
+    readonly type: string;
+    static resource: string;
     people: string[];
 
     static async fetchPeople(urls: string[]) {

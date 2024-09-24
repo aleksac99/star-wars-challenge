@@ -2,13 +2,14 @@ import { Resource } from "./Resource";
 import { Person } from "./Person";
 
 export class Planet extends Resource {
-
-    type: string = "Planet";
+    
+    readonly type: string = "Planet";
+    static resource: string = "planets";
 
     private constructor(name: string, people: Person[]) {
         super();
-        this.people = people.map(person => person.name);
         this.name = name;
+        this.people = people.map(person => person.name);
     }
     
     static async fromObject(obj: any) {

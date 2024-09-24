@@ -2,12 +2,13 @@ import { Person } from "./Person";
 import { Resource } from "./Resource";
 
 export class Vehicle extends Resource{
+    
+    readonly type: string = "Vehicle";
+    static resource: string = "vehicles";
 
-    people: string[];
-    resourceType: string = "Vehicle";
-
-    private constructor(people: Person[]) {
+    private constructor(name: string, people: Person[]) {
         super();
+        this.name = name;
         this.people = people.map(character => character.name);
     }
 
@@ -15,6 +16,6 @@ export class Vehicle extends Resource{
 
         const pilots =  await super.fetchPeople(obj.pilots);
 
-        return new Vehicle(pilots);
+        return new Vehicle(obj.name, pilots);
     }
 }
