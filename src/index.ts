@@ -16,14 +16,10 @@ const askForInput = () => {
         fetchRelatedPeople(processedInput).then((result) => {
 
           result.map(r => {
-            console.log(r.resourceType);
+            console.log(r.type);
             console.log(r.people);
             console.log("--");
           });
-          // console.log(result);
-          // console.log(typeof result);
-          // console.log(result.type);
-          // console.log(result.people);
           askForInput();});
         
     }

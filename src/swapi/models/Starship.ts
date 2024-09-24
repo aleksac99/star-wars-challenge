@@ -1,22 +1,20 @@
-import axios from "axios";
-import { PersonImpl } from "./Person";
+import { Person } from "./Person";
+import { Resource } from "./Resource";
 
-export class StarshipImpl{
+export class Starship extends Resource{
 
     people: string[];
     resourceType: string = "Starship";
 
-    constructor(people: PersonImpl[]) {
+    private constructor(people: Person[]) {
+        super();
         this.people = people.map(person => person.name);
     }
     
-    static async fromObject(obj: any): Promise<StarshipImpl> {
+    static async fromObject(obj: any): Promise<Starship> {
 
-        const pilots =  await Promise.all(
-            obj.pilots.map(async (pilotUrl: string) => {
-                const response = await axios.get<PersonImpl>(pilotUrl);
-                return response.data;}));
+        const pilots =  await super.fetchPeople(obj.pilots);
 
-        return new StarshipImpl(pilots);
+        return new Starship(pilots);
     }
 }

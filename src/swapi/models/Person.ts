@@ -1,8 +1,4 @@
-export interface Person {
-    name: string
-}
-
-export class PersonImpl implements Person {
+export class Person{
 
     name: string;
 
@@ -10,7 +6,7 @@ export class PersonImpl implements Person {
         this.name = name
     }
 
-    static fromObject(obj: any): PersonImpl {
-        return new PersonImpl(obj.name);
+    static fromObject(obj: any): Person {
+        return new Person(obj.name);
     }
 }
