@@ -1,0 +1,29 @@
+{
+  "name": "star-wars-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+  },
+  "bin": {
+    "star-wars": "./dist/index.js"
+  },
+  "keywords": [],
+  "author": "Aleksa Cvetanovic",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.5.5",
+    "axios": "^1.7.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  }
+}
