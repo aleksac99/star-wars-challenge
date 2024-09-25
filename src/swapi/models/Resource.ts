@@ -12,7 +12,7 @@ export abstract class Resource {
         const people =  await Promise.all(
             urls.map(async (url: string) => {
                 const response = await axios.get<Person>(url);
-                return response.data;}));
+                return Person.fromObject(response.data);}));
 
         return people;
     }
