@@ -5,19 +5,18 @@ import { Planet } from "../swapi/models/Planet";
 import { Species } from "../swapi/models/Species";
 import { Vehicle } from "../swapi/models/Vehicle";
 import { Starship } from "../swapi/models/Starship";
-import { RelevantPeople } from "../core/RelevantPeople";
-import { Resource } from "../swapi/models/Resource";
+import { RelatedPeople } from "../core/RelatedPeople";
 
-export const fetchRelatedPeople = async (name: string): Promise<Resource[]> => {
+export const fetchRelatedPeople = async (query: string): Promise<RelatedPeople> => {
 
-    console.log('Searching...' + name);
+    console.log(`Searching ${query}`);
 
-    const relevantPeople = await Promise.all([
-        search<SearchResults<Film>>(Film.resource, name),
-        search<SearchResults<Planet>>(Planet.resource, name),
-        search<SearchResults<Species>>(Species.resource, name),
-        search<SearchResults<Vehicle>>(Vehicle.resource, name),
-        search<SearchResults<Starship>>(Starship.resource, name)
+    const searchResults = await Promise.all([
+        search<SearchResults<Film>>(Film.resource, query),
+        search<SearchResults<Planet>>(Planet.resource, query),
+        search<SearchResults<Species>>(Species.resource, query),
+        search<SearchResults<Vehicle>>(Vehicle.resource, query),
+        search<SearchResults<Starship>>(Starship.resource, query)
       ]).then(([filmSearchResults, planetSearchResults, speciesSearchResults, vehiclesSearchResults, starshipsSearchResults]) => {
 
         const films = filmSearchResults.results.map(element =>
@@ -38,5 +37,6 @@ export const fetchRelatedPeople = async (name: string): Promise<Resource[]> => {
           return Promise.all([...films, ...planets, ...species, ...vehicles, ...starships])
       });
 
-    return relevantPeople;
+    const relatedPeople = new RelatedPeople(query, searchResults);
+    return relatedPeople;
 };
