@@ -1,6 +1,6 @@
 # Star Wars Challenge
 
-This repository contains code for a Star Wars Challenge app, created as a part of my interview process.
+This repository contains code for a Star Wars Challenge app.
 
 This TypeScript app wraps around [Star Wars API](https://swapi.dev/), and its goal is to find people associated with the Star Wars related search term provided by the user.
 
