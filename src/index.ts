@@ -15,7 +15,7 @@ const askForInput = () => {
     } else {
       console.info(`Searching ${query}`);
         fetchRelatedPeople(query).then((relatedPeople) => {
-          console.log(relatedPeople.toString());
+          console.info(relatedPeople.people.length != 0 ? relatedPeople.toString() : `No related term found for ${query}`);
           askForInput();});
         
     }
