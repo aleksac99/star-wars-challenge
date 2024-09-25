@@ -16,8 +16,10 @@ const askForInput = () => {
       console.info(`Searching ${query}`);
         fetchRelatedPeople(query).then((relatedPeople) => {
           console.info(relatedPeople.people.length != 0 ? relatedPeople.toString() : `No related term found for ${query}`);
-          askForInput();});
-        
+          askForInput();}).catch(error => {
+            console.info("Service currently unavailable.");
+            rl.close();
+          });
     }
   });
 };
