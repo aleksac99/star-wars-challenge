@@ -9,8 +9,6 @@ import { RelatedPeople } from "../core/RelatedPeople";
 
 export const fetchRelatedPeople = async (query: string): Promise<RelatedPeople> => {
 
-    console.log(`Searching ${query}`);
-
     const searchResults = await Promise.all([
         search<SearchResults<Film>>(Film.resource, query),
         search<SearchResults<Planet>>(Planet.resource, query),

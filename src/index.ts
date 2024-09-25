@@ -8,12 +8,13 @@ const rl = readline.createInterface({
 
 const askForInput = () => {
   rl.question('Please enter a Star Wars search term (enter exit to close the app): ', (input) => {
-    const processedInput = input.trim().toLowerCase();
-    if (processedInput === 'exit') {
+    const query = input.trim().toLowerCase();
+    if (query === 'exit') {
         console.log('Exiting the app...');
         rl.close();
     } else {
-        fetchRelatedPeople(processedInput).then((relatedPeople) => {
+        console.log(`Searching ${query}`);
+        fetchRelatedPeople(query).then((relatedPeople) => {
           console.log(relatedPeople.toString());
           askForInput();});
         
