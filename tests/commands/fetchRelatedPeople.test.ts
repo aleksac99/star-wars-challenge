@@ -44,4 +44,10 @@ describe("Test fetching of related people", () => {
         const result = await fetchRelatedPeople(query);
         expect(result.toString()).toMatch("Saleucami | Planet | No related people found");
     });
+    test('Test with no term found: search term `qwe`', async () => {
+
+        const query = 'qwe';
+        const result = await fetchRelatedPeople(query);
+        expect(result.toString()).toMatch("");
+    });
 });
