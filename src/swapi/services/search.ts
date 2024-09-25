@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const BASE_URL = "https://swapi.dev/api"
+import { BASE_URL } from '../utils/consts';
 
 export const search = async <T>(resource: string, term: string): Promise<T> => {
     const response = await axios.get<T>(`${BASE_URL}/${resource}/?search=${term}`);
