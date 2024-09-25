@@ -10,10 +10,10 @@ const askForInput = () => {
   rl.question('Please enter a Star Wars search term (enter exit to close the app): ', (input) => {
     const query = input.trim().toLowerCase();
     if (query === 'exit') {
-        console.log('Exiting the app...');
+        console.info('Exiting the app...');
         rl.close();
     } else {
-        console.log(`Searching ${query}`);
+      console.info(`Searching ${query}`);
         fetchRelatedPeople(query).then((relatedPeople) => {
           console.log(relatedPeople.toString());
           askForInput();});
