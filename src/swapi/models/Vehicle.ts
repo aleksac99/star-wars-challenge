@@ -1,7 +1,7 @@
 import { Person } from "./Person";
-import { Resource } from "./Resource";
+import { NonHumanResource } from "./NonHumanResource";
 
-export class Vehicle extends Resource{
+export class Vehicle extends NonHumanResource{
     
     readonly type: string = "Vehicle";
     static resource: string = "vehicles";

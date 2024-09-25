@@ -1,20 +1,21 @@
+import { NonHumanResource } from "../swapi/models/NonHumanResource";
 import { Resource } from "../swapi/models/Resource";
 
 export class RelatedPeople {
 
     query: string;
-    people: Resource[];
+    resources: Resource[];
 
-    constructor(query: string, people: Resource[]) {
+    constructor(query: string, resources: Resource[] ) {
         this.query = query;
-        this.people = people;
+        this.resources = resources;
     }
 
     toString(): string {
         let displayString = "";
-        this.people.map(person => {
-            displayString += `\n${person.name} | ${person.type} | `;
-            const peopleStr = person.people.join(", ");
+        this.resources.map(resource => {
+            displayString += `\n${resource.name} | ${resource.type} | `;
+            const peopleStr = resource instanceof NonHumanResource ? resource.people.join(", ") : resource.name;
             displayString += (peopleStr !== "" ? peopleStr : "No related people found");
         })
         return displayString;
